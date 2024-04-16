@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Academic\\DatabaseDesignDevProject\\ConsumerApplication\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ConsumerApplication.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ConsumerApplication.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Academic\\DatabaseDesignDevProject\\ConsumerApplication\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "D:\\Academic\\DatabaseDesignDevProject\\ConsumerApplication\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Academic\\DatabaseDesignDevProject\\ConsumerApplication\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Academic\\DatabaseDesignDevProject\\ConsumerApplication\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ConsumerApplication.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ConsumerApplication.props",
+      "PackagePath": "build\\ConsumerApplication.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ConsumerApplication.props",
+      "PackagePath": "buildMultiTargeting\\ConsumerApplication.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ConsumerApplication.props",
+      "PackagePath": "buildTransitive\\ConsumerApplication.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

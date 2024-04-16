@@ -1,0 +1,23 @@
+﻿@page "/User/Signin"
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using ConsumerApplication.Models
+
+@inject DatabaseContext _db
+
+@if (user != null) {
+    <p>@user.email</p>
+}
+
+@code {
+    private users user = new users();
+
+    protected override void OnInitialized()
+    {
+        user.userid = 1;
+        UserData ud = new UserData(_db);
+
+        user = ud.GetUser(user);
+    }
+
+}
