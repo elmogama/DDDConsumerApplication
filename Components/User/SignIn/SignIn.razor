@@ -5,19 +5,19 @@
 
 @inject DatabaseContext _db
 
-@if (user != null) {
-    <p>@user.email</p>
+@if (_user != null) {
+    <p>@_user.Email</p>
 }
 
 @code {
-    private users user = new users();
+    private User _user = new User();
 
     protected override void OnInitialized()
     {
-        user.userid = 1;
+        _user.Userid = 1;
         UserData ud = new UserData(_db);
 
-        user = ud.GetUser(user);
+        _user = ud.GetUser(_user);
     }
 
 }

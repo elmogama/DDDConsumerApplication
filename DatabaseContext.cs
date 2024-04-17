@@ -1,5 +1,6 @@
 ﻿using ConsumerApplication.Models;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace ConsumerApplication.Data;
 
@@ -12,15 +13,32 @@ public class DatabaseContext : DbContext
         _config = config;
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public List<T> ExecuteSelect<T>(string sql)
     {
-        modelBuilder.UseIdentityColumns();
+        List<T> rows = new List<T>();
+
+        using (NpgsqlConnection conn = new NpgsqlConnection(_config.GetConnectionString("Default")))
+        {
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand(sql, conn);
+            NpgsqlDataReader datarow = comm.ExecuteReader();
+            while (datarow.Read())
+            {
+                T row = (T)Activator.CreateInstance(typeof(T), new object[] { datarow });
+                rows.Add(row);
+            }
+
+            return rows;
+        }
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
+    public void ExecuteUpdate<T>(string sql)
     {
-        options.UseNpgsql(_config.GetConnectionString("Default"));
+        using (NpgsqlConnection conn = new NpgsqlConnection(_config.GetConnectionString("Default")))
+        {
+            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand(sql, conn);
+            NpgsqlDataReader datarow = comm.ExecuteReader();
+        }
     }
-    
-    public DbSet<users> users { get; set; }
 }

@@ -1,4 +1,5 @@
 ﻿using ConsumerApplication.Models;
+using Npgsql;
 
 namespace ConsumerApplication.Data.Data;
 
@@ -12,8 +13,11 @@ public class UserData
         _db = db;
     }
     
-    public users GetUser(users inputUser)
+    public User GetUser(User inputUser)
     {
-        return this._db.users.First(x => x.userid == inputUser.userid);
+        List<User> users = _db.ExecuteSelect<User>($"SELECT * FROM users WHERE userid = {inputUser.Userid}");
+        User user = users.Count != 0 ? users[0] : null;
+        
+        return user;
     }
 }
