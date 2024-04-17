@@ -1,6 +1,5 @@
 using ConsumerApplication.Components;
 using ConsumerApplication.Data;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
