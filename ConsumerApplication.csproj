@@ -13,6 +13,7 @@
       <_ContentIncludedByDefault Remove="EndPoints\obj\EndPoints.csproj.nuget.dgspec.json" />
       <_ContentIncludedByDefault Remove="EndPoints\obj\project.assets.json" />
       <_ContentIncludedByDefault Remove="EndPoints\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="Components\User\SignIn\SignIn.razor" />
     </ItemGroup>
 
     <ItemGroup>
@@ -25,7 +26,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Components\User\Register\" />
+      <AdditionalFiles Include="Components\Pages\User\SignIn\SignIn.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Components\Pages\Customer\" />
+      <Folder Include="Components\Pages\Employee\" />
     </ItemGroup>
 
 </Project>

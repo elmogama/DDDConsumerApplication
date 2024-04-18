@@ -113,4 +113,5 @@ D:\Academic\DatabaseDesignDevProject\ConsumerApplication\bin\Debug\net8.0\zh-Han
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\ConsumerApplication.sourcelink.json
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Layout\CustomerNavMenu.razor.rz.scp.css
-D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Layout\CustomerLayout.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Layout\EmployeeNavMenu.razor.rz.scp.css
