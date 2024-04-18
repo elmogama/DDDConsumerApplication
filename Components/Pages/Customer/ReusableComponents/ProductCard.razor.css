@@ -1,0 +1,37 @@
+﻿.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    &:nth-child(3n+1) {
+        grid-column: 1;
+    }
+    &:nth-child(3n+2) {
+        grid-column: 2;
+    }
+    &:nth-child(3n+3) {
+        grid-column: 3;
+    }
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover {
+    opacity: 0.7;
+}

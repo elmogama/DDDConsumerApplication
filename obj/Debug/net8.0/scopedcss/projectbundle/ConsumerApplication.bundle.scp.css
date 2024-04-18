@@ -307,3 +307,51 @@ main[b-k27o02hudr] {
         right: 0.75rem;
         top: 0.5rem;
     }
+/* _content/ConsumerApplication/Components/Pages/Customer/Home.razor.rz.scp.css */
+#search-container[b-q0ibz6nvqb]{
+    margin-bottom: 20px;
+}
+
+#product-card-container[b-q0ibz6nvqb]{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+/* _content/ConsumerApplication/Components/Pages/Customer/ReusableComponents/ProductCard.razor.rz.scp.css */
+.card[b-gtb0hrc9xz] {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    &:nth-child(3n+1) {
+        grid-column: 1;
+    }
+    &:nth-child(3n+2)[b-gtb0hrc9xz] {
+        grid-column: 2;
+    }
+    &:nth-child(3n+3)[b-gtb0hrc9xz] {
+        grid-column: 3;
+    }
+}
+
+.price[b-gtb0hrc9xz] {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button[b-gtb0hrc9xz] {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover[b-gtb0hrc9xz] {
+    opacity: 0.7;
+}

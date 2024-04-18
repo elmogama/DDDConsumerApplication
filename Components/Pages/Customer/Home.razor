@@ -1,0 +1,48 @@
+﻿@page "/customer/home"
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using ConsumerApplication.Models
+
+
+@rendermode InteractiveServer
+
+<div class="bg-blue-100" id="search-container">
+    <input @bind-value="SearchText" placeholder="Search Product Name"/>
+    <input type="button" value="Search" @onclick="@SearchProducts"/>
+</div>
+
+@if (pageInitial)
+{
+    <h3>Welcome to Consumer Application</h3>
+    <h3 style="margin-top: 30px">Please Search For A Product</h3>
+}
+else if (_products.Count == 0)
+{
+    <h4 style="color: red">No Products Found</h4>
+}
+<section id="product-card-container">
+    @foreach (Product _product in _products)
+    {
+            <ProductCard product="@_product"></ProductCard>
+    }
+</section>
+
+@inject DatabaseContext _db
+
+@code {
+    private bool pageInitial = false;
+    private string SearchText = "";
+    private List<Product> _products = new List<Product>();
+
+    protected override void OnInitialized()
+    {
+        pageInitial = true;
+    }
+    
+    public void SearchProducts()
+    {
+        ProductData pd = new ProductData(_db);
+        _products = pd.GetProducts(SearchText);
+        pageInitial = false;
+    }
+}

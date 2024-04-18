@@ -5,7 +5,6 @@ namespace ConsumerApplication.Data.Data;
 
 public class UserData
 {
-
     private DatabaseContext _db;
     
     public UserData(DatabaseContext db)

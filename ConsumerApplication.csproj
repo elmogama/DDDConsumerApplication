@@ -14,6 +14,7 @@
       <_ContentIncludedByDefault Remove="EndPoints\obj\project.assets.json" />
       <_ContentIncludedByDefault Remove="EndPoints\obj\project.packagespec.json" />
       <_ContentIncludedByDefault Remove="Components\User\SignIn\SignIn.razor" />
+      <_ContentIncludedByDefault Remove="Components\ReusableCustomerComponents\ProductCard.razor" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,7 +31,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Components\Pages\Customer\" />
       <Folder Include="Components\Pages\Employee\" />
     </ItemGroup>
 
