@@ -40,4 +40,10 @@ public class UserData
         List<User> users = _db.ExecuteSelect<User>($"SELECT * FROM users WHERE lower(email) = lower('{email}')");
         return users.Count > 0;
     }
+    
+
+    public void SaveAddresses(List<string> addresses)
+    {
+        
+    }
 }

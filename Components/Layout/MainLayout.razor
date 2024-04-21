@@ -39,10 +39,6 @@ else if (_navManager.Uri.Contains("employee"))
 
         <main>
             <div class="top-row px-4">
-                <a href="/shopping-cart"><img src = "https://i.imgur.com/pKv1Stv.png"
-                                              onmouseover="this.src = 'https://i.imgur.com/cn2L4xH.png'"
-                                              onmouseleave="this.src = 'https://i.imgur.com/pKv1Stv.png'"
-                                              style="width: 45px;height: 45px;"/></a>
             </div>
 
             <article class="content px-4">
@@ -58,5 +54,22 @@ else if (_navManager.Uri.Contains("user"))
         <div class="content px-4">
             @Body
         </div>
+    </div>
+}
+else if (_navManager.Uri.Contains("account"))
+{
+    <div class="page">
+        <div class="sidebar">
+            <EmployeeNavMenu/>
+        </div>
+
+        <main>
+            <div class="top-row px-4">
+            </div>
+
+            <article class="content px-4">
+                @Body
+            </article>
+        </main>
     </div>
 }

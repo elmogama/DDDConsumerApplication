@@ -16,5 +16,9 @@ public class CreditCardData
         string sql = $"SELECT * FROM creditcards WHERE customerid = {customerId}";
         return _db.ExecuteSelect<CreditCard>(sql);
     }
-    
+
+    public void SaveNewCard(CreditCard creditCard)
+    {
+        
+    }
 }

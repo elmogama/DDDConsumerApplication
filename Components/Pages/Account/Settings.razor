@@ -1,1 +1,134 @@
-﻿
+﻿@page "/account/settings"
+@rendermode InteractiveServer
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using ConsumerApplication.Models
+
+@inject DatabaseContext _db
+@inject ICookie _cookie
+@inject NavigationManager _nav
+
+<div class="text-center: center;"> 
+    <h3>Settings</h3>
+</div>
+@if (_user != null)
+{
+    <div>
+        <label for="email">Email</label>
+        <input type="text" value="@_user.Email"/>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" value="@_user.Password"/>
+    </div>
+    <div>
+        <select for="email">Credit Cards
+            @foreach (CreditCard creditCard in creditCards)
+            {
+                <option type="text" value="@creditCard.CreditCardNum">@creditCard.CreditCardNum</option>
+            }
+        </select>
+        @this.ShowCreditCard(oldCreditCard)
+    </div>
+    @if (addresses != null)
+    {
+        <div>
+            <select>
+                @foreach (string address in addresses)
+                {
+                    <option value="@address">@address</option>
+                }
+            </select>
+            @this.ShowChoose(oldAddress)
+        </div>
+    }
+
+    <button type="submit" @onclick="() => SaveUserInfo()">Save</button>
+}
+
+@code {
+
+    User _user;
+    string userType;
+
+    string oldAddress;
+    string newAddress;
+
+    string oldCreditCard;
+    string newCreditCard;
+    
+    List<CreditCard> creditCards;
+    string email;
+    string password;
+    List<string> addresses;
+
+    Customer customer;
+    
+    protected override async void OnInitialized()
+    {
+        userType = await _cookie.GetValue("usertype");
+
+        int userid = Int32.Parse(await _cookie.GetValue("userid"));
+        if (userType.ToLower() == "user")
+        {
+            CustomerData cd = new CustomerData(_db); 
+            customer = cd.GetCustomer(userid);
+            addresses = customer.ShippingAddresses.Split(",").ToList();
+            CreditCardData ccd = new CreditCardData(_db);
+            creditCards = ccd.GetCreditCardList(customer.CustomerId.ToString());
+        }
+        
+        UserData ud = new UserData(_db);
+
+        User user = new User();
+        user.Userid = userid;
+        
+        _user = ud.GetUser(user);
+        if (!addresses.Contains(""))
+        {
+            addresses.Add("");
+        }
+
+
+        StateHasChanged();
+    }
+
+    private void SaveUserInfo(){
+        
+    }
+
+    public void SaveNewAddress(string oldAddress, string newAddress)
+    {
+        UserData ud = new UserData(_db);
+        if (oldAddress == null)
+        {
+            oldAddress = "";
+        }
+        addresses[addresses.FindIndex(x => x == oldAddress)] = newAddress;
+        ud.SaveAddresses(addresses);
+    }
+
+    public void SaveNewCreditCard(string old, string newc)
+    {
+        CreditCardData ccd = new CreditCardData(_db);
+        if (old == null)
+        {
+            CreditCard creditCard = new CreditCard();
+            creditCard.CreditCardNum = newc;
+            creditCard.CustomerId = customer.CustomerId;
+            creditCard.BillingAddress = "";
+            ccd.SaveNewCard(creditCard);
+        }
+    }
+
+    public RenderFragment ShowChoose(string oldAddress) => (__builder) =>
+    {
+        <input type="text" @bind="newAddress" @onfocusout="() => SaveNewAddress(oldAddress, newAddress)"/>
+    };
+    
+    public RenderFragment ShowCreditCard(string oldCreditCard) => (__builder) =>
+    {
+        <input type="text" @bind="newCreditCard" @onfocusout="() => SaveNewCreditCard(oldCreditCard, newCreditCard)"/>
+    };
+
+}
