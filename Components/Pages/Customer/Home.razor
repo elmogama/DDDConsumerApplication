@@ -3,7 +3,6 @@
 @using ConsumerApplication.Data.Data
 @using ConsumerApplication.Models
 
-
 @rendermode InteractiveServer
 
 <div class="bg-blue-100" id="search-container">
@@ -30,14 +29,9 @@ else if (_products.Count == 0)
 @inject DatabaseContext _db
 
 @code {
-    private bool pageInitial = false;
+    private bool pageInitial = true;
     private string SearchText = "";
     private List<Product> _products = new List<Product>();
-
-    protected override void OnInitialized()
-    {
-        pageInitial = true;
-    }
     
     public void SearchProducts()
     {

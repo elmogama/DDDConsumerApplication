@@ -1,0 +1,78 @@
+﻿@page "/customer/shopping-cart"
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using System.Linq
+       
+@rendermode InteractiveServer
+
+@if (shoppingCartItems == null)
+{
+    <div style="text-align: center; width: 100%">
+        <h2>No Items In Your Cart!</h2>
+    </div>
+}
+else
+{
+<h1>Shopping Cart</h1>
+<div class="shopping-cart">
+  @foreach(Models.ShoppingCart shoppingCartItem in shoppingCartItems){
+    <div class="product">
+      <div class="product-image">
+        <img src="@shoppingCartItem.ImageLink">
+      </div>
+      <div class="product-details">
+        <div class="product-title">@shoppingCartItem.ProductName</div>
+      </div>
+      <div class="product-price">@shoppingCartItem.Price</div>
+      <div class="product-quantity">
+        <input id="quantity-input" type="number" value="@shoppingCartItem.Quantity" min="1" @oninput="(ui) => ChangeQuantity(shoppingCartItem.ProductId, (string)ui.Value)">
+      </div>
+      <div class="product-removal">
+        <button class="remove-product" @onclick="() => RemoveItem(shoppingCartItem.ProductId)">
+          Remove
+        </button>
+      </div>
+      <div class="product-line-price">@shoppingCartItem.TotalPrice</div>
+    </div>
+}
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">@shoppingCartItems.Sum(item => item.TotalPrice)</div>
+    </div>
+  </div>
+
+  <button class="checkout">Checkout</button>
+</div>
+}
+
+@inject DatabaseContext _db
+@inject ICookie _cookie
+
+@code {
+    List<Models.ShoppingCart> shoppingCartItems;
+
+    protected override async void OnInitialized()
+    {
+        string customerid = await _cookie.GetValue("customerid");
+        ShoppingCartData scd = new ShoppingCartData(_db);
+        shoppingCartItems = scd.GetShoppingCartItems(customerid);
+        StateHasChanged();
+    }
+
+    public async void RemoveItem(int productid)
+    {
+      ShoppingCartData scd = new ShoppingCartData(_db);
+      string customerid = await _cookie.GetValue("customerid");
+      scd.RemoveShoppingCartItem(productid, customerid);
+      StateHasChanged();
+    }
+
+    public async void ChangeQuantity(int productid, string quantity)
+    {
+      ShoppingCartData scd = new ShoppingCartData(_db);
+      string customerid = await _cookie.GetValue("customerid");
+      scd.ChangeQuantity(productid, quantity, customerid);
+    }
+    
+}

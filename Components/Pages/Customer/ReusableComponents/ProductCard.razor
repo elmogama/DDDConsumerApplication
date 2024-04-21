@@ -1,7 +1,7 @@
 ﻿@using ConsumerApplication.Models
 <div class="card">
     <img src="@product.ImageLink" style="width:100%; max-height: 100px">
-    <a href="/product/@product.ProductId"><h1>@product.ProductName</h1></a>
+    <a href="/customer/product/@product.ProductId"><h1>@product.ProductName</h1></a>
     <p class="price">@product.Price</p>
     <p>@product.Description</p>
     <!-- Make it so that "Add to Card" changes to "- {n} +" if customer already has item in cart-->

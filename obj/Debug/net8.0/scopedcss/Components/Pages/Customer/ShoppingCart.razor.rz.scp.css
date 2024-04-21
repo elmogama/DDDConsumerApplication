@@ -1,0 +1,134 @@
+/* Global "table" column settings */
+.product-image[b-kew7itromm] { float: left; width: 20%; }
+.product-details[b-kew7itromm] { float: left; width: 37%; }
+.product-price[b-kew7itromm] { float: left; width: 12%; }
+.product-quantity[b-kew7itromm] { float: left; width: 10%; }
+.product-removal[b-kew7itromm] { float: left; width: 9%; }
+.product-line-price[b-kew7itromm] { float: left; width: 12%; text-align: right; }
+
+
+/* This is used as the traditional .clearfix class */
+.group[b-kew7itromm]:before,
+.group[b-kew7itromm]:after {
+    content: '';
+    display: table;
+}
+.group[b-kew7itromm]:after {
+    clear: both;
+}
+.group[b-kew7itromm] {
+    zoom: 1;
+}
+
+
+/* Apply dollar signs */
+.product .product-price[b-kew7itromm]:before, .product .product-line-price[b-kew7itromm]:before, .totals-value[b-kew7itromm]:before {
+    content: '$';
+}
+
+
+/* Body/Header stuff */
+body[b-kew7itromm] {
+    padding: 0px 30px 30px 20px;
+    font-weight: 100;
+}
+
+h1[b-kew7itromm] {
+    font-weight: 100;
+}
+
+/* Column headers */
+.column-labels[b-kew7itromm] {
+    label {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .product-image[b-kew7itromm], .product-details[b-kew7itromm], .product-removal[b-kew7itromm] {
+        text-indent: -9999px;
+    }
+}
+
+
+/* Product entries */
+.product[b-kew7itromm] {
+    min-height: 90px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+
+    .product-image {
+        text-align: center;
+        img {
+            width: 100px;
+        }
+    }
+
+    .product-details[b-kew7itromm] {
+        .product-title {
+            margin-right: 20px;
+        }
+        .product-description[b-kew7itromm] {
+            margin: 5px 20px 5px 0;
+            line-height: 1.4em;
+        }
+    }
+
+    .product-quantity[b-kew7itromm] {
+        input {
+            width: 40px;
+
+        }
+    }
+
+    .remove-product[b-kew7itromm] {
+        border: 0;
+        padding: 4px 8px;
+        background-color: #c66;
+        color: #fff;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+
+    .remove-product:hover[b-kew7itromm] {
+        background-color: #a44;
+    }
+}
+
+
+/* Totals section */
+.totals[b-kew7itromm] {
+    .totals-item {
+        float: right;
+        clear: both;
+        width: 100%;
+        margin-bottom: 10px;
+
+        label {
+            float: left;
+            clear: both;
+            width: 79%;
+            text-align: right;
+        }
+
+        .totals-value[b-kew7itromm] {
+            float: right;
+            width: 21%;
+            text-align: right;
+        }
+    }
+}
+
+.checkout[b-kew7itromm] {
+    float: right;
+    border: 0;
+    margin-top: 20px;
+    padding: 6px 25px;
+    background-color: #6b6;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 3px;
+}
+
+.checkout:hover[b-kew7itromm] {
+    background-color: #494;
+}

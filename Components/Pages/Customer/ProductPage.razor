@@ -1,0 +1,43 @@
+﻿@page "/customer/product/{ProductId:int}"
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using ConsumerApplication.Models
+
+<span>@_product.Brand</span>
+<h1>@_product.ProductName</h1>
+<div class="productcontainer">
+    <div class="left-column">
+        <img src="@_product.ImageLink" />
+    </div>
+    <div class="right-column">
+        <div class="product-description">
+            <p>@_product.Type</p>
+            <p>@_product.Description</p>
+        </div>
+        
+        <div class="product-price">
+            <p>$@_product.Price</p>
+            <a href="/addtocart" class="cart-btn">Add to cart</a>
+        </div>
+    </div>
+    <p>Size: @_product.Size</p>
+</div>
+
+@inject DatabaseContext _db
+@inject ICookie _cookie
+@inject NavigationManager _nav
+
+@code {
+    
+    [Parameter]
+    public int ProductId { get; set; }
+    
+    Product _product = null;
+    
+    protected override void OnParametersSet()
+    {
+        ProductData pd = new ProductData(_db);
+        _product = pd.GetProduct(ProductId);
+    }
+    
+}

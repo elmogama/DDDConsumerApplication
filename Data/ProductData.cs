@@ -15,4 +15,8 @@ public class ProductData
     {
         return _db.ExecuteSelect<Product>($"SELECT * FROM products WHERE lower(productname) LIKE lower('%{productName}%')");
     }
+    public Product GetProduct(int productId)
+    {
+        return _db.ExecuteSelect<Product>($"SELECT * FROM products WHERE productid = {productId}")[0];
+    }
 }

@@ -55,6 +55,9 @@
             
             if (user.Usertype.ToLower() == "user")
             {
+                CustomerData cd = new CustomerData(_db);
+                Customer customer = cd.GetCustomer(user.Userid);
+                _cookie.SetValue("customerid",customer.CustomerId.ToString());
                 _nav.NavigateTo("/customer/home");
             }
             else
