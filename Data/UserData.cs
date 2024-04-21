@@ -19,4 +19,12 @@ public class UserData
         
         return user;
     }
+
+    public User Login(string email, string password)
+    {
+        List<User> users = _db.ExecuteSelect<User>($"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'");
+        User user = users.Count != 0 ? users[0] : null;
+        
+        return user;
+    }
 }

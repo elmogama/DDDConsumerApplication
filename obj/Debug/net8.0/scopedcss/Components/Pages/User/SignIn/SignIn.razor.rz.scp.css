@@ -1,0 +1,31 @@
+button[b-ajld6irrdk] {
+    background-color: cornflowerblue;
+    width: 100%;
+    color: white;
+    padding: 15px;
+    margin: 10px 0px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=text][b-ajld6irrdk], input[type=password][b-ajld6irrdk] {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 2px solid dodgerblue;
+    box-sizing: border-box;
+}
+
+button:hover[b-ajld6irrdk] {
+    opacity: 0.7;
+}
+
+.container[b-ajld6irrdk] {
+    padding: 25px;
+    background-color: lightgray;
+}
+
+p[b-ajld6irrdk]{
+    margin-top: 20px;
+}

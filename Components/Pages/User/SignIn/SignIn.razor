@@ -1,23 +1,66 @@
 ﻿@page "/user/signin"
+@rendermode InteractiveServer
 @using ConsumerApplication.Data
 @using ConsumerApplication.Data.Data
 @using ConsumerApplication.Models
 
 @inject DatabaseContext _db
+@inject ICookie _cookie
+@inject NavigationManager _nav
 
-@if (_user != null) {
-    <p>@_user.Email</p>
-}
+<div class="container">
+    <label>Email : </label>
+    <input  @bind="email" type="text" placeholder="Enter Username" name="username" required>
+    <label>Password : </label>
+    <input  @bind="password" type="password" placeholder="Enter Password" name="password" required>
+    <button @onclick="() => Login(email, password)">Login</button>
+    <a href="/user/register"><p>Register?</p></a>
+</div>
 
 @code {
-    private User _user = new User();
+    
+    string email { get; set; }
+    string password { get; set; }
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
-        _user.Userid = 1;
         UserData ud = new UserData(_db);
-
-        _user = ud.GetUser(_user);
+        email = await _cookie.GetValue("email");
+        password = await _cookie.GetValue("password");
+        if (email != "" && password != "")
+        {
+            User user = ud.Login(email, password);
+            if (user != null)
+                if (user.Usertype.ToLower() == "user")
+                {
+                    _nav.NavigateTo("/customer/home");
+                }
+                else
+                {
+                    _nav.NavigateTo("/employee/home");
+                }
+        }
     }
 
+    public void Login(string email, string password)
+    {
+        UserData ud = new UserData(_db);
+        User user = ud.Login(email, password);
+        if (user != null)
+        {
+            _cookie.SetValue("email", email);
+            _cookie.SetValue("password", password);
+            _cookie.SetValue("userype", user.Usertype);
+            _cookie.SetValue("userid", user.Userid.ToString());
+            
+            if (user.Usertype.ToLower() == "user")
+            {
+                _nav.NavigateTo("/customer/home");
+            }
+            else
+            {
+                _nav.NavigateTo("/employee/home");
+            }
+        }
+    }
 }
