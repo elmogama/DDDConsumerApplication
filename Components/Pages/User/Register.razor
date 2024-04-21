@@ -1,0 +1,109 @@
+﻿@page "/user/register"
+@rendermode InteractiveServer
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using ConsumerApplication.Models
+
+@inject DatabaseContext _db
+@inject ICookie _cookie
+@inject NavigationManager _nav
+
+<div class="container">    
+    <label>Name : </label>
+    <input  @bind="name" type="text" placeholder="Enter Name" name="name" required>
+    <label>Email : </label>
+    <input  @bind="email" type="text" placeholder="Enter Email" name="username" required>
+    <label>Password : </label>
+    <input  @bind="password" type="password" placeholder="Enter Password" name="password" required>
+    <label>Address(es) : </label>
+    <input  @bind="addresses" type="text" placeholder="Enter Address(es, comma seperated)" name="addresses" required>
+    <select @bind="usertype">
+        <option value="Default">---</option>
+        <option value="User">User</option>
+        <option value="Staff">Staff</option>
+    </select>
+    @this.ShowChoose(usertype)
+    <button @onclick="RegisterUser">Login</button>
+    @if (error)
+    {
+        <p style="color: red">One of the fields is inputted incorrectly or the email is already used in an account</p>
+    }
+    <a href="/user/register"><p>Sign In?</p></a>
+</div>
+
+@code {
+    string name { get; set; }
+    string addresses { get; set; }
+    string jobtitle { get; set; }
+    int salary { get; set; }
+    string email { get; set; }
+    string password { get; set; }
+    string usertype { get; set; }
+    
+    bool error { get; set; }
+
+    protected override async void OnInitialized()
+    {
+        
+    }
+
+    public void RegisterUser()
+    {
+        UserData ud = new UserData(_db);
+        error = ud.EmailAlreadyUsed(email);
+        if (error)
+        {
+            StateHasChanged();
+            return;
+        }
+
+        if (usertype == "Staff")
+        {
+            EmployeeData ed = new EmployeeData(_db);
+            User user = new User();
+            user.Email = email;
+            user.Password = password;
+            user.Usertype = usertype;
+            ud.CreateNewUser(user);
+            int userId = ud.Login(user.Email, user.Password).Userid;
+            
+            Employee employee = new Employee();
+            employee.UserId = userId;
+            employee.Name = name;
+            employee.Salary = salary;
+            employee.Emp_Address = addresses;
+            employee.JobTitle = jobtitle;
+            ed.RegisterEmployee(employee);
+        }
+        else
+        {
+            CustomerData cd = new CustomerData(_db);
+            User user = new User();
+            user.Email = email;
+            user.Password = password;
+            user.Usertype = usertype;
+            ud.CreateNewUser(user);
+            int userId = ud.Login(user.Email, user.Password).Userid;
+            
+            Customer customer = new Customer();
+            customer.UserId = userId;
+            customer.Name = name;
+            customer.ShippingAddresses = addresses;
+            if (cd.RegisterCustomer(customer))
+            {
+                _nav.NavigateTo("/user/signin");
+            };
+        }
+    }
+
+    public RenderFragment ShowChoose(string userType) => (__builder) =>
+    {
+        if (userType == "Staff")
+        {
+            <label>Job Title : </label>
+            <input  @bind="jobtitle" type="text" placeholder="Enter Job Title" name="name" required>
+            <label>Salary : </label>
+            <input  @bind="salary" type="text" placeholder="Enter Salary" name="name" required>
+        }
+    };
+}

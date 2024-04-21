@@ -1,4 +1,5 @@
-﻿@page "/user/signin"
+﻿@page "/"
+@page "/user/signin"
 @rendermode InteractiveServer
 @using ConsumerApplication.Data
 @using ConsumerApplication.Data.Data
@@ -10,7 +11,7 @@
 
 <div class="container">
     <label>Email : </label>
-    <input  @bind="email" type="text" placeholder="Enter Username" name="username" required>
+    <input  @bind="email" type="text" placeholder="Enter Email" name="username" required>
     <label>Password : </label>
     <input  @bind="password" type="password" placeholder="Enter Password" name="password" required>
     <button @onclick="() => Login(email, password)">Login</button>
@@ -24,22 +25,7 @@
 
     protected override async void OnInitialized()
     {
-        UserData ud = new UserData(_db);
-        email = await _cookie.GetValue("email");
-        password = await _cookie.GetValue("password");
-        if (email != "" && password != "")
-        {
-            User user = ud.Login(email, password);
-            if (user != null)
-                if (user.Usertype.ToLower() == "user")
-                {
-                    _nav.NavigateTo("/customer/home");
-                }
-                else
-                {
-                    _nav.NavigateTo("/employee/home");
-                }
-        }
+        
     }
 
     public void Login(string email, string password)

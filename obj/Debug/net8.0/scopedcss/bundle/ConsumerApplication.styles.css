@@ -317,6 +317,15 @@ main[b-k27o02hudr] {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 }
+/* _content/ConsumerApplication/Components/Pages/Customer/OrderPage.razor.rz.scp.css */
+.card[b-ukkuz9wf9b] {
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    font-family: arial;
+}
 /* _content/ConsumerApplication/Components/Pages/Customer/ProductPage.razor.rz.scp.css */
 .productcontainer[b-tu2leow12f] {
     margin: auto;
@@ -519,6 +528,38 @@ h1[b-kew7itromm] {
 
 .checkout:hover[b-kew7itromm] {
     background-color: #494;
+}
+/* _content/ConsumerApplication/Components/Pages/User/Register.razor.rz.scp.css */
+button[b-wkxsqihrgi] {
+    background-color: cornflowerblue;
+    width: 100%;
+    color: white;
+    padding: 15px;
+    margin: 10px 0px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=text][b-wkxsqihrgi], input[type=password][b-wkxsqihrgi] {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 2px solid dodgerblue;
+    box-sizing: border-box;
+}
+
+button:hover[b-wkxsqihrgi] {
+    opacity: 0.7;
+}
+
+.container[b-wkxsqihrgi] {
+    padding: 25px;
+    background-color: lightgray;
+}
+
+p[b-wkxsqihrgi]{
+    margin-top: 20px;
 }
 /* _content/ConsumerApplication/Components/Pages/User/SignIn/SignIn.razor.rz.scp.css */
 button[b-ajld6irrdk] {

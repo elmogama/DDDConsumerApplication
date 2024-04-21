@@ -45,4 +45,39 @@ public class ShoppingCartData
                      $"WHERE status = 'In Cart' AND c.customerid = {customerId} AND p.productid = {productid}) AND productid = {productid}";
         _db.ExecuteUpdate<ShoppingCart>(sql);
     }
+
+    public void Checkout(string customerId)
+    {
+        string sql = $"UPDATE orders SET status = 'Shipped' WHERE " +
+                     $"orderid = (SELECT o.orderid FROM purchases AS p " +
+                     $"LEFT JOIN orders AS o ON p.orderid = o.orderid " +
+                     $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
+                     $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
+                     $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
+                     $"WHERE status = 'In Cart' AND c.customerid = {customerId})";
+        _db.ExecuteUpdate<ShoppingCart>(sql);
+    }
+
+    public void ChangeDeliveryType(string deliveryType, decimal deliveryPrice, string customerId)
+    {
+        string sql = $"UPDATE orders SET deliverytype = '{deliveryType}', deliveryPrice = {deliveryPrice} WHERE " +
+                     $"orderid = (SELECT o.orderid FROM purchases AS p " +
+                     $"LEFT JOIN orders AS o ON p.orderid = o.orderid " +
+                     $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
+                     $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
+                     $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
+                     $"WHERE status = 'In Cart' AND c.customerid = {customerId})";
+        _db.ExecuteUpdate<ShoppingCart>(sql);
+    }
+
+    public Order GetOrder(string customerId)
+    {
+        string sql = $"SELECT o.* FROM purchases AS p " +
+                  $"LEFT JOIN orders AS o ON p.orderid = o.orderid " +
+                  $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
+                  $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
+                  $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
+                  $"WHERE status = 'In Cart' AND c.customerid = {customerId}";
+        return _db.ExecuteSelect<Order>(sql)[0];
+    }
 }

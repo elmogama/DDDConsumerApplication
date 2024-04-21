@@ -27,4 +27,17 @@ public class UserData
         
         return user;
     }
+
+    public void CreateNewUser(User user)
+    {
+        string sql = $"INSERT INTO users (email, password, usertype) VALUES ('{user.Email}', '{user.Password}', '{user.Usertype}')";
+        _db.ExecuteUpdate<User>(sql);
+        
+    }
+
+    public bool EmailAlreadyUsed(string email)
+    {
+        List<User> users = _db.ExecuteSelect<User>($"SELECT * FROM users WHERE email = '{email}'");
+        return users.Count > 0;
+    }
 }

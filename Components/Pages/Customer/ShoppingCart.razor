@@ -37,12 +37,32 @@ else
 }
   <div class="totals">
     <div class="totals-item">
-      <label>Subtotal</label>
+      <label>Subtotal: </label>
       <div class="totals-value" id="cart-subtotal">@shoppingCartItems.Sum(item => item.TotalPrice)</div>
     </div>
+    <div class="totals-item">
+      <label>Delivery Price: </label>
+      <div class="totals-value" id="cart-subtotal">@order.DeliveryPrice</div>
+    </div>  
+    <div class="totals-item">
+      <label>Total Price: </label>
+      <div class="totals-value" id="cart-subtotal">@Sum(@order.DeliveryPrice, @shoppingCartItems.Sum(item => item.TotalPrice))
+        @{
+          object Sum(decimal orderDeliveryPrice, decimal orderSum)
+          {
+            return orderDeliveryPrice + orderSum;
+          }
+        }
+      </div>
+    </div>
   </div>
-
-  <button class="checkout">Checkout</button>
+  <label for="delivery-type">Delivery Type: </label>
+  <select name="delivery-type" @oninput="(ui) => ChangeDeliveryType((string)ui.Value)">
+    <option>@order.DeliveryType</option>
+    <option value="Standard">Standard</option>
+    <option value="Express">Express</option>
+  </select>
+  <button class="checkout" @onclick="Checkout">Checkout</button>
 </div>
 }
 
@@ -51,12 +71,14 @@ else
 
 @code {
     List<Models.ShoppingCart> shoppingCartItems;
+    Models.Order order;
 
     protected override async void OnInitialized()
     {
         string customerid = await _cookie.GetValue("customerid");
         ShoppingCartData scd = new ShoppingCartData(_db);
         shoppingCartItems = scd.GetShoppingCartItems(customerid);
+        order = scd.GetOrder(customerid);
         StateHasChanged();
     }
 
@@ -73,6 +95,29 @@ else
       ShoppingCartData scd = new ShoppingCartData(_db);
       string customerid = await _cookie.GetValue("customerid");
       scd.ChangeQuantity(productid, quantity, customerid);
+    }
+    
+    public async void ChangeDeliveryType(string deliveryType)
+    {
+      ShoppingCartData scd = new ShoppingCartData(_db);
+      string customerid = await _cookie.GetValue("customerid");
+      if (deliveryType == "Express")
+      {
+        order.DeliveryPrice = 15;
+      }
+      else
+      {
+        order.DeliveryPrice = 10;
+      }
+      scd.ChangeDeliveryType(deliveryType, order.DeliveryPrice, customerid);
+      StateHasChanged();
+    }
+
+    public async void Checkout()
+    {
+      ShoppingCartData scd = new ShoppingCartData(_db);
+      string customerid = await _cookie.GetValue("customerid");
+      scd.Checkout(customerid);
     }
     
 }

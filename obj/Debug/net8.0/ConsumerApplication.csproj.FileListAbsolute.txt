@@ -120,3 +120,5 @@ D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scoped
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\User\SignIn\SignIn.razor.rz.scp.css
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Customer\ProductPage.razor.rz.scp.css
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Customer\ShoppingCart.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Customer\OrderPage.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\User\Register.razor.rz.scp.css

@@ -1,0 +1,39 @@
+﻿@page "/customer/orders"
+
+@rendermode InteractiveServer
+
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using ConsumerApplication.Models
+
+@inject DatabaseContext _db
+@inject ICookie _cookie
+
+@if (orders != null)
+{
+    @foreach (Order order in orders)
+    {
+        <div class="card">
+            <label>Order Id: </label><h1>@order.OrderId</h1>
+            <label>Credit Card: </label><p>@order.CreditCardNum</p>
+            <label>Delivery Date: </label><p>@order.DeliveryDate</p>
+            <label>Ship Date</label><p>@order.ShipDate</p>
+            <label>Address: </label><p>@order.ShippingAddress</p>
+            <label>Shipped: </label><p>@order.Status</p>
+        </div>
+    }
+}
+
+
+@code {
+    List<Order> orders;
+    
+    protected override async void OnInitialized()
+    {
+        string customerid = await _cookie.GetValue("customerid");
+        OrderData od = new OrderData(_db);
+        orders = od.GetOrders(customerid);
+        StateHasChanged();
+    }
+
+}

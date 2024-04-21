@@ -40,10 +40,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XFNldHRpbmdzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope = b-k27o02hudr
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b21lclxIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-q0ibz6nvqb
 
+[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Customer/OrderPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b21lclxPcmRlclBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ukkuz9wf9b
+
 [D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Customer/ProductPage.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b21lclxQcm9kdWN0UGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-tu2leow12f
@@ -79,3 +79,7 @@ build_metadata.AdditionalFiles.CssScope = b-gtb0hrc9xz
 [D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Customer/ShoppingCart.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b21lclxTaG9wcGluZ0NhcnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-kew7itromm
+
+[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/User/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2VyXFJlZ2lzdGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-wkxsqihrgi
