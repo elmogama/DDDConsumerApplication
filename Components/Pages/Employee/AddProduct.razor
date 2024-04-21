@@ -29,10 +29,26 @@
             <label for="price">Product Price: </label>
             <input @bind="_product.Price" type="number" step="0.01" name="price" placeholder="@_product.Price">
         </div>
+
+        <div class="product-quantitiy">
+                    <label for="quantity">Product Quantity: </label>
+            <input @bind="_product.Quantity" type="number" step="1" name="quantity" placeholder="@_product.Quantity">
+        </div>
+
     </div>
     <label for="size">Product Size (LxWxH): </label>
     <input @bind="_product.Size" type="text" name="size" placeholder="@_product.Size">
 </div>
+
+{
+    <select id="warehouses" @onchange="(ui) => GetWarehouseProducts(_warehousesList.Find(x=>x.Name == (string)ui.Value))">
+    @foreach (Warehouse warehouse in _warehousesList)
+    {
+        <option value="@warehouse.Name">@warehouse.Name</option>
+    }
+    </select>
+}
+
 <button @onclick="AddProducts">Click Here To Submit</button>
 
 @inject DatabaseContext _db
@@ -48,5 +64,7 @@
         pd.AddProduct(_product);
         _nav.NavigateTo("employee/home");
     }
-    
+
+    List<Warehouse> _warehousesList;
+    Warehouse selectedWarehouse;
 }
