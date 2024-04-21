@@ -80,6 +80,30 @@ build_metadata.AdditionalFiles.CssScope = b-gtb0hrc9xz
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b21lclxTaG9wcGluZ0NhcnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-kew7itromm
 
+[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Employee/AddProduct.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbXBsb3llZVxBZGRQcm9kdWN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-u5hgwo2lxa
+
+[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Employee/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbXBsb3llZVxIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-67692wj59s
+
+[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Employee/ProductPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbXBsb3llZVxQcm9kdWN0UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-20l6cdyfhi
+
+[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Employee/ReusableComponents/EmployeeProductCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbXBsb3llZVxSZXVzYWJsZUNvbXBvbmVudHNcRW1wbG95ZWVQcm9kdWN0Q2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-3y99ar1t81
+
+[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Employee/ReusableComponents/WarehouseProductCardView.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbXBsb3llZVxSZXVzYWJsZUNvbXBvbmVudHNcV2FyZWhvdXNlUHJvZHVjdENhcmRWaWV3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-4zmrxkhllw
+
+[D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/Employee/Warehouses.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbXBsb3llZVxXYXJlaG91c2VzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-5nu5ap8hbe
+
 [D:/Academic/DatabaseDesignDevProject/ConsumerApplication/Components/Pages/User/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2VyXFJlZ2lzdGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-wkxsqihrgi

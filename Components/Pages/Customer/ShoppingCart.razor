@@ -2,6 +2,7 @@
 @using ConsumerApplication.Data
 @using ConsumerApplication.Data.Data
 @using System.Linq
+@using ConsumerApplication.Models
        
 @rendermode InteractiveServer
 
@@ -15,7 +16,20 @@ else
 {
 <h1>Shopping Cart</h1>
 <div class="shopping-cart">
-  @foreach(Models.ShoppingCart shoppingCartItem in shoppingCartItems){
+  
+  <h3>Payment Method:</h3>
+  @if (creditCards!=null && creditCards.Count > 0)
+  {
+    <select id="warehouses" @onchange="(ui) => SetOrderCreditCardNumber(creditCards.Find(x=>x.CreditCardNum == (string)ui.Value))">
+      @foreach (CreditCard creditCard in creditCards)
+      {
+        <option value="@creditCard.CreditCardNum">@creditCard.CreditCardNum</option>
+      }
+    </select>
+  }
+  
+  @foreach (Models.ShoppingCart shoppingCartItem in shoppingCartItems)
+  {
     <div class="product">
       <div class="product-image">
         <img src="@shoppingCartItem.ImageLink">
@@ -34,7 +48,7 @@ else
       </div>
       <div class="product-line-price">@shoppingCartItem.TotalPrice</div>
     </div>
-}
+  }
   <div class="totals">
     <div class="totals-item">
       <label>Subtotal: </label>
@@ -43,7 +57,7 @@ else
     <div class="totals-item">
       <label>Delivery Price: </label>
       <div class="totals-value" id="cart-subtotal">@order.DeliveryPrice</div>
-    </div>  
+    </div>
     <div class="totals-item">
       <label>Total Price: </label>
       <div class="totals-value" id="cart-subtotal">@Sum(@order.DeliveryPrice, @shoppingCartItems.Sum(item => item.TotalPrice))
@@ -72,13 +86,17 @@ else
 @code {
     List<Models.ShoppingCart> shoppingCartItems;
     Models.Order order;
+    List<CreditCard> creditCards;
 
     protected override async void OnInitialized()
     {
         string customerid = await _cookie.GetValue("customerid");
         ShoppingCartData scd = new ShoppingCartData(_db);
+        CreditCardData ccd = new CreditCardData(_db);
         shoppingCartItems = scd.GetShoppingCartItems(customerid);
+        creditCards = ccd.GetCreditCardList(customerid);
         order = scd.GetOrder(customerid);
+        
         StateHasChanged();
     }
 
@@ -119,5 +137,10 @@ else
       string customerid = await _cookie.GetValue("customerid");
       scd.Checkout(customerid);
     }
-    
+
+    private void SetOrderCreditCardNumber(CreditCard creditCard)
+    {
+      order.CreditCardNum = creditCard.CreditCardNum;
+    }
+
 }

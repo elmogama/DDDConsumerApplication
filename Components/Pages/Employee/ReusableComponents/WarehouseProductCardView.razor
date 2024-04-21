@@ -1,0 +1,11 @@
+﻿@using ConsumerApplication.Models
+<div class="card">
+    <a href="/employee/product/@product.ProductId"><h1>@product.ProductName</h1></a>
+    <h3>Size:</h3><p>@product.Size</p>
+    <h3>Stock: </h3><p>@product.Stock</p>
+</div>
+
+@code {
+    [Parameter]
+    public ProductWithStock product { get; set; }
+}

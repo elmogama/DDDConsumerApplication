@@ -1,0 +1,60 @@
+﻿@page "/employee/product/{ProductId:int}"
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using ConsumerApplication.Models
+
+@rendermode InteractiveServer
+
+<label for="brand">Product Brand: </label>
+<input @bind="_product.Brand" type="text" name="brand" placeholder="@_product.Brand">
+
+<label for="name">Product Name: </label>
+<input @bind="_product.ProductName" type="text" name="name" placeholder="@_product.ProductName">
+
+<div class="productcontainer">
+    <div class="left-column">
+        <img src="@_product.ImageLink" />
+        <label for="imageLink">Image Link: </label>
+        <input @bind="_product.ImageLink" type="text" name="imageLink" placeholder="@_product.ImageLink">
+    </div>
+    <div class="right-column">
+        <div class="product-description">
+            <label for="type">Product Type: </label>
+            <input @bind="_product.Type" type="text" name="type" placeholder="@_product.Type">
+            <label for="desc">Product Description: </label>
+            <input @bind="_product.Description" type="text" name="desc" placeholder="@_product.Description">
+        </div>
+        
+        <div class="product-price">
+            <label for="price">Product Price: </label>
+            <input @bind="_product.Price" type="number" step="0.01" name="price" placeholder="@_product.Price">
+        </div>
+    </div>
+    <label for="size">Product Size (LxWxH): </label>
+    <input @bind="_product.Size" type="text" name="size" placeholder="@_product.Size">
+</div>
+<button @onclick="UpdateProduct">Click Here To Submit</button>
+
+@inject DatabaseContext _db
+@inject ICookie _cookie
+@inject NavigationManager _nav
+
+@code {
+    [Parameter]
+    public int ProductId { get; set; }
+    
+    Product _product = null;
+    
+    protected override void OnParametersSet()
+    {
+        ProductData pd = new ProductData(_db);
+        _product = pd.GetProduct(ProductId);
+    }
+    
+    public void UpdateProduct()
+    {
+        ProductData pd = new ProductData(_db);
+        pd.UpdateProduct(_product);
+    }
+    
+}

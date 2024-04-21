@@ -30,8 +30,4 @@
       <AdditionalFiles Include="Components\Pages\User\SignIn\SignIn.razor" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Components\Pages\Employee\" />
-    </ItemGroup>
-
 </Project>

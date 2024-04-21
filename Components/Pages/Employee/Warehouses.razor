@@ -1,0 +1,61 @@
+﻿@page "/employee/warehouses"
+@using ConsumerApplication.Data
+@using ConsumerApplication.Data.Data
+@using ConsumerApplication.Models
+@using ConsumerApplication.Components.Pages.Employee.ReusableComponents
+@rendermode InteractiveServer
+
+<label>Available Warehouses: </label>
+@if (_warehousesList == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <select id="warehouses" @onchange="(ui) => GetWarehouseProducts(_warehousesList.Find(x=>x.Name == (string)ui.Value))">
+    @foreach (Warehouse warehouse in _warehousesList)
+    {
+        <option value="@warehouse.Name">@warehouse.Name</option>
+    }
+    </select>
+}
+
+@if (_products == null)
+{
+}
+else
+{
+    <h1>Selected Warehouse: @selectedWarehouse.Name</h1>
+    <h2>Available Capacity: @selectedWarehouse.AvailableCapacity</h2>
+    <h2>Total Capacity: @selectedWarehouse.TotalCapacity</h2>
+    <h3>Warehouse Address: @selectedWarehouse.War_Address</h3>
+    @foreach (ProductWithStock _product in _products)
+    {
+        <WarehouseProductCardView product="@_product"></WarehouseProductCardView>
+    }
+}
+
+@inject DatabaseContext _db
+
+@code{
+    
+    List<Warehouse> _warehousesList;
+    List<ProductWithStock> _products;
+    Warehouse selectedWarehouse;
+    
+    protected override void OnInitialized()
+    {
+        WarehousesData wd = new WarehousesData(_db);
+        _warehousesList = wd.GetAllWarehouses();
+        StateHasChanged();
+    }
+
+    public void GetWarehouseProducts(Warehouse warehouse)
+    {
+        WarehousesData wd = new WarehousesData(_db);
+        ProductData pd = new ProductData(_db);
+        _products = pd.GetProductsForWarehouse(warehouse);
+        selectedWarehouse = warehouse;
+        StateHasChanged();
+    }
+}

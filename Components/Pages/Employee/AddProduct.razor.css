@@ -1,0 +1,29 @@
+﻿.productcontainer {
+    margin: auto;
+}
+.left-column {
+    width: 50%;
+    float: left;
+}
+.left-column img{
+    width: 100%;
+    height: 100%;
+}
+.right-column {
+    width: 50%;
+    float: left;
+    padding-left: 20px;
+}
+.cart-btn {
+    display: inline-block;
+    background-color: #7DC855;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+}
+.cart-btn:hover {
+    background-color: #64af3d;
+}

@@ -529,6 +529,163 @@ h1[b-kew7itromm] {
 .checkout:hover[b-kew7itromm] {
     background-color: #494;
 }
+/* _content/ConsumerApplication/Components/Pages/Employee/AddProduct.razor.rz.scp.css */
+.productcontainer[b-u5hgwo2lxa] {
+    margin: auto;
+}
+.left-column[b-u5hgwo2lxa] {
+    width: 50%;
+    float: left;
+}
+.left-column img[b-u5hgwo2lxa]{
+    width: 100%;
+    height: 100%;
+}
+.right-column[b-u5hgwo2lxa] {
+    width: 50%;
+    float: left;
+    padding-left: 20px;
+}
+.cart-btn[b-u5hgwo2lxa] {
+    display: inline-block;
+    background-color: #7DC855;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+}
+.cart-btn:hover[b-u5hgwo2lxa] {
+    background-color: #64af3d;
+}
+/* _content/ConsumerApplication/Components/Pages/Employee/Home.razor.rz.scp.css */
+#search-container[b-67692wj59s]{
+    margin-bottom: 20px;
+}
+
+#product-card-container[b-67692wj59s]{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+/* _content/ConsumerApplication/Components/Pages/Employee/ProductPage.razor.rz.scp.css */
+.productcontainer[b-20l6cdyfhi] {
+    margin: auto;
+}
+.left-column[b-20l6cdyfhi] {
+    width: 50%;
+    float: left;
+}
+.left-column img[b-20l6cdyfhi]{
+    width: 100%;
+    height: 100%;
+}
+.right-column[b-20l6cdyfhi] {
+    width: 50%;
+    float: left;
+    padding-left: 20px;
+}
+.cart-btn[b-20l6cdyfhi] {
+    display: inline-block;
+    background-color: #7DC855;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+}
+.cart-btn:hover[b-20l6cdyfhi] {
+    background-color: #64af3d;
+}
+/* _content/ConsumerApplication/Components/Pages/Employee/ReusableComponents/EmployeeProductCard.razor.rz.scp.css */
+.card[b-3y99ar1t81] {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    &:nth-child(3n+1) {
+        grid-column: 1;
+    }
+    &:nth-child(3n+2)[b-3y99ar1t81] {
+        grid-column: 2;
+    }
+    &:nth-child(3n+3)[b-3y99ar1t81] {
+        grid-column: 3;
+    }
+}
+
+.price[b-3y99ar1t81] {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button[b-3y99ar1t81] {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover[b-3y99ar1t81] {
+    opacity: 0.7;
+}
+/* _content/ConsumerApplication/Components/Pages/Employee/ReusableComponents/WarehouseProductCardView.razor.rz.scp.css */
+.card[b-4zmrxkhllw] {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    &:nth-child(3n+1) {
+        grid-column: 1;
+    }
+    &:nth-child(3n+2)[b-4zmrxkhllw] {
+        grid-column: 2;
+    }
+    &:nth-child(3n+3)[b-4zmrxkhllw] {
+        grid-column: 3;
+    }
+}
+
+.price[b-4zmrxkhllw] {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button[b-4zmrxkhllw] {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover[b-4zmrxkhllw] {
+    opacity: 0.7;
+}
+/* _content/ConsumerApplication/Components/Pages/Employee/Warehouses.razor.rz.scp.css */
+label[b-5nu5ap8hbe] {
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding-right: 10px;
+}
+
+select[b-5nu5ap8hbe] {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+}
 /* _content/ConsumerApplication/Components/Pages/User/Register.razor.rz.scp.css */
 button[b-wkxsqihrgi] {
     background-color: cornflowerblue;

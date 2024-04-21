@@ -1,0 +1,37 @@
+.card[b-4zmrxkhllw] {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    &:nth-child(3n+1) {
+        grid-column: 1;
+    }
+    &:nth-child(3n+2)[b-4zmrxkhllw] {
+        grid-column: 2;
+    }
+    &:nth-child(3n+3)[b-4zmrxkhllw] {
+        grid-column: 3;
+    }
+}
+
+.price[b-4zmrxkhllw] {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button[b-4zmrxkhllw] {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover[b-4zmrxkhllw] {
+    opacity: 0.7;
+}

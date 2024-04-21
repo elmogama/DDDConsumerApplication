@@ -1,0 +1,9 @@
+#search-container[b-67692wj59s]{
+    margin-bottom: 20px;
+}
+
+#product-card-container[b-67692wj59s]{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}

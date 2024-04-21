@@ -1,0 +1,37 @@
+.card[b-3y99ar1t81] {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    &:nth-child(3n+1) {
+        grid-column: 1;
+    }
+    &:nth-child(3n+2)[b-3y99ar1t81] {
+        grid-column: 2;
+    }
+    &:nth-child(3n+3)[b-3y99ar1t81] {
+        grid-column: 3;
+    }
+}
+
+.price[b-3y99ar1t81] {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button[b-3y99ar1t81] {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover[b-3y99ar1t81] {
+    opacity: 0.7;
+}

@@ -18,7 +18,7 @@ public class ShoppingCartData
                      $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
                      $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
                      $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
-                     $"WHERE status = 'In Cart' AND c.customerid = {customerId}";
+                     $"WHERE lower(status) = lower('In Cart') AND c.customerid = {customerId}";
         return _db.ExecuteSelect<ShoppingCart>(sql);
     }
 
@@ -30,7 +30,7 @@ public class ShoppingCartData
                      $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
                      $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
                      $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
-                     $"WHERE status = 'In Cart' AND c.customerid = {customerId} AND p.productid = {productid}) AND productid = {productid}";
+                     $"WHERE lower(status) = lower('In Cart') AND c.customerid = {customerId} AND p.productid = {productid}) AND productid = {productid}";
         _db.ExecuteUpdate<ShoppingCart>(sql);
     }
 
@@ -42,7 +42,7 @@ public class ShoppingCartData
                      $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
                      $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
                      $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
-                     $"WHERE status = 'In Cart' AND c.customerid = {customerId} AND p.productid = {productid}) AND productid = {productid}";
+                     $"WHERE lower(status) = lower('In Cart') AND c.customerid = {customerId} AND p.productid = {productid}) AND productid = {productid}";
         _db.ExecuteUpdate<ShoppingCart>(sql);
     }
 
@@ -54,7 +54,7 @@ public class ShoppingCartData
                      $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
                      $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
                      $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
-                     $"WHERE status = 'In Cart' AND c.customerid = {customerId})";
+                     $"WHERE lower(status) = lower('In Cart') AND c.customerid = {customerId})";
         _db.ExecuteUpdate<ShoppingCart>(sql);
     }
 
@@ -66,7 +66,7 @@ public class ShoppingCartData
                      $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
                      $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
                      $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
-                     $"WHERE status = 'In Cart' AND c.customerid = {customerId})";
+                     $"WHERE lower(status) = lower('In Cart') AND c.customerid = {customerId})";
         _db.ExecuteUpdate<ShoppingCart>(sql);
     }
 
@@ -77,7 +77,7 @@ public class ShoppingCartData
                   $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
                   $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
                   $"LEFT JOIN products AS prod ON prod.productid = p.productid " +
-                  $"WHERE status = 'In Cart' AND c.customerid = {customerId}";
+                  $"WHERE lower(status) = lower('In Cart') AND c.customerid = {customerId}";
         return _db.ExecuteSelect<Order>(sql)[0];
     }
 }

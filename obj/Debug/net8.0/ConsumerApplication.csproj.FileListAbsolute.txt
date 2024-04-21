@@ -122,3 +122,9 @@ D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scoped
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Customer\ShoppingCart.razor.rz.scp.css
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Customer\OrderPage.razor.rz.scp.css
 D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\User\Register.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Employee\Home.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Employee\ReusableComponents\EmployeeProductCard.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Employee\AddProduct.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Employee\ProductPage.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Employee\ReusableComponents\WarehouseProductCardView.razor.rz.scp.css
+D:\Academic\DatabaseDesignDevProject\ConsumerApplication\obj\Debug\net8.0\scopedcss\Components\Pages\Employee\Warehouses.razor.rz.scp.css

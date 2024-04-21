@@ -73,7 +73,10 @@
             employee.Salary = salary;
             employee.Emp_Address = addresses;
             employee.JobTitle = jobtitle;
-            ed.RegisterEmployee(employee);
+            if (ed.RegisterEmployee(employee))
+            {
+                _nav.NavigateTo("/user/signin");
+            }
         }
         else
         {

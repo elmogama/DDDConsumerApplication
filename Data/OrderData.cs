@@ -17,7 +17,7 @@ public class OrderData
         string sql = $"SELECT o.* FROM orders AS o " +
                   $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
                   $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
-                  $"WHERE status != 'In Cart' AND c.customerid = {customerId}";
+                  $"WHERE lower(status) != lower('In Cart') AND c.customerid = {customerId}";
 
         return _db.ExecuteSelect<Order>(sql);
     }

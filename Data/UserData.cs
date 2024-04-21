@@ -22,7 +22,7 @@ public class UserData
 
     public User Login(string email, string password)
     {
-        List<User> users = _db.ExecuteSelect<User>($"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'");
+        List<User> users = _db.ExecuteSelect<User>($"SELECT * FROM users WHERE lower(email) = lower('{email}') AND password = '{password}'");
         User user = users.Count != 0 ? users[0] : null;
         
         return user;
@@ -37,7 +37,7 @@ public class UserData
 
     public bool EmailAlreadyUsed(string email)
     {
-        List<User> users = _db.ExecuteSelect<User>($"SELECT * FROM users WHERE email = '{email}'");
+        List<User> users = _db.ExecuteSelect<User>($"SELECT * FROM users WHERE lower(email) = lower('{email}')");
         return users.Count > 0;
     }
 }
