@@ -80,4 +80,32 @@ public class ShoppingCartData
                   $"WHERE lower(status) = lower('In Cart') AND c.customerid = {customerId}";
         return _db.ExecuteSelect<Order>(sql)[0];
     }
+    
+    public void AddShoppingCardItems(Customer shopper, int productid, int quantity){
+        List<ShoppingCart> currentCart = GetShoppingCartItems(shopper.CustomerId.ToString());
+
+        CreditCardData ccd = new CreditCardData(_db);
+        string credit = ccd.GetCreditCardList(shopper.CustomerId.ToString())[0].ToString();
+        
+        if(currentCart.Count == 0){
+            string sql = $"INSERT INTO order (CreditCardNum, Status, DeliveryType, DeliveryPrice, OrderDate, ShipDate, DeliveryDate, ShippingAddresses) VALUES ('{credit}', 'In Cart', '', '0', '0001-01-01T00:00:00', '0001-01-01T00:00:00')";
+
+            _db.ExecuteUpdate<Order>(sql);
+        }
+
+        int orderID = GetInCartOrders(shopper.CustomerId.ToString()).OrderId;
+
+        string sql2 = $"INSERT INTO purchases ({orderID}, {productid}, {quantity})";
+        _db.ExecuteUpdate<Purchase>(sql2);
+    }
+    public Order GetInCartOrders(string customerId)
+    {
+        string sql = $"SELECT o.* FROM orders AS o " +
+                     $"LEFT JOIN creditcards AS cc ON cc.creditcardnum = o.creditcardnum " +
+                     $"LEFT JOIN customers c ON c.customerid = cc.customerid " +
+                     $"WHERE lower(status) = lower('In Cart') AND c.customerid = {customerId}";
+
+        return _db.ExecuteSelect<Order>(sql)[0];
+    }
+    
 }

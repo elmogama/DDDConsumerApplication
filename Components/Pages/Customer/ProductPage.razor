@@ -17,7 +17,7 @@
         
         <div class="product-price">
             <p>$@_product.Price</p>
-            <a class="cart-btn">Add to cart</a>
+            <button @onclick="() => AddToCart()" class="cart-btn">Add to cart</button>
         </div>
     </div>
     <p>Size: @_product.Size</p>
@@ -39,5 +39,9 @@
         ProductData pd = new ProductData(_db);
         _product = pd.GetProduct(ProductId);
     }
-    
+
+    private void AddToCart()
+    {
+    }
+
 }

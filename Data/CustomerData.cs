@@ -31,4 +31,10 @@ public class CustomerData
             return false;
         }
     }
+
+    public void UpdateShippingAddresses(Customer customer, List<string> addresses)
+    {
+        string sql =
+            $"UPDATE customer SET shippingAddress = '{{{string.Join(',', addresses)}}}' WHERE customerid =  {customer.CustomerId}";
+    }
 }
